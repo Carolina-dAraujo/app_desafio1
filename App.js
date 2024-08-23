@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Switch } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Switch, Button } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-import Slider from '@react-native-community/slider'; // Corrigido para importar o Slider diretamente
+import Slider from '@react-native-community/slider';
 
 class App extends Component {
   constructor(props) {
@@ -9,8 +9,13 @@ class App extends Component {
     this.state = {
       sexo: 0,
       valor: 0,
-      estudante: false
+      estudante: false,
+      
     };
+  }
+
+  enviar(){
+    this.setState.
   }
 
   render() {
@@ -40,7 +45,7 @@ class App extends Component {
           <Text style={styles.subtitulo}>Limite:</Text>
           <Slider
             minimumValue={0}
-            maximumValue={100}
+            maximumValue={1000000}
             onValueChange={(valorSelecionado) => this.setState({ valor: valorSelecionado })}
             value={this.state.valor}
             minimumTrackTintColor='#ffff'
@@ -49,12 +54,16 @@ class App extends Component {
           <Text style={{textAlign: 'center', fontSize: 20, color: '#ffff'}}> {this.state.valor.toFixed(0)}</Text>
 
           <Text style={styles.subtitulo}>Estudante?</Text>
-          <Switch
-            value={this.state.estudante}
-            onValueChange={ (valorSwitch)=> this.setState({estudante: valorSwitch})}
-          />
-          <Text>{(this.state.estudante) ? "Sim" : "Não"}</Text>
-          
+
+          <View style={styles.subcontainer}>
+            <Switch 
+              value={this.state.estudante}
+              onValueChange={(valorSwitch) => this.setState({ estudante: valorSwitch })}
+            />
+            <Text style={styles.textoSwitch}>{this.state.estudante ? "Sim" : "Não"}</Text>
+          </View>
+
+          <Button color={'#FFFF'} title='Enviar' onPress={this.enviar}/>
         </View>
       </View>
     );
@@ -68,10 +77,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
   },
+  subcontainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: 10,
+    marginBottom: 10,
+  },
   titulo: {
     fontSize: 25,
     textAlign: 'center',
-    marginTop: 25, // Corrigido para número
+    marginTop: 25, 
     color: '#ffff',
     fontWeight: 'bold',
   },
@@ -99,6 +114,12 @@ const styles = StyleSheet.create({
     borderColor: '#ffff',
     margin: 10,
     backgroundColor: '#ffff'
+  },
+  textoSwitch: {
+    fontSize: 15,
+    color: '#ffff',
+    fontWeight: 'bold',
+    marginLeft: 10
   }
 });
 
