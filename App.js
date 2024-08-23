@@ -7,6 +7,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      nome: '',
+      idade: '',
       sexo: 0,
       valor: 0,
       estudante: false,
@@ -15,7 +17,6 @@ class App extends Component {
   }
 
   enviar(){
-    this.setState.
   }
 
   render() {
@@ -27,10 +28,10 @@ class App extends Component {
 
         <View>
           <Text style={styles.subtitulo}>Nome:</Text>
-          <TextInput style={styles.input} />
+          <TextInput style={styles.input} onChangeText={ (texto) => this.setState({nome : texto})}/>
 
           <Text style={styles.subtitulo}>Idade:</Text>
-          <TextInput style={styles.input} />
+          <TextInput style={styles.input} onChangeText={ (texto1) => this.setState({idade : texto1})} />
 
           <Text style={styles.subtitulo}>Sexo:</Text>
           <Picker
