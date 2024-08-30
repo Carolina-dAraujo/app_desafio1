@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Switch, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Switch, Button, TouchableOpacity } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import Slider from '@react-native-community/slider';
 
@@ -64,7 +64,9 @@ class App extends Component {
             <Text style={styles.textoSwitch}>{this.state.estudante ? "Sim" : "Não"}</Text>
           </View>
 
-          <Button color={'#FFFF'} title='Enviar' onPress={this.enviar}/>
+          <TouchableOpacity style={styles.botao}>
+            <Text style={styles.textoBotao}>Abrir Conta</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -119,6 +121,19 @@ const styles = StyleSheet.create({
   textoSwitch: {
     fontSize: 15,
     color: '#ffff',
+    fontWeight: 'bold',
+    marginLeft: 10
+  },
+  botao: {
+    backgroundColor: '#ffff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10
+  },
+  textoBotao: {
+    fontSize: 15,
+    textAlign: 'center',
+    color: '#234b78',
     fontWeight: 'bold',
     marginLeft: 10
   }
